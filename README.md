@@ -4,7 +4,7 @@
 <br>
 <h1 align="center">
   <br>
-  Machine Learning
+ Progetto Machine Learning
   <br>
 </h1>
 <h2>Autori</h2>
