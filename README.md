@@ -7,9 +7,7 @@
   Machine Learning
   <br>
 </h1>
-<a name="Autori"></a>
-<a name="overview"></a>
-## &#9741; &nbsp; Overview
+<h2>Autori</h2>
 <br>
 <ul>
   <li>Andrea Piancone</li>
