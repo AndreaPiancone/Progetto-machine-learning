@@ -8,7 +8,6 @@
   <br>
 </h1>
 <h2>Autori</h2>
-<br>
 <ul>
   <li>Andrea Piancone</li>
   <li>Valentina Nelli</li>
