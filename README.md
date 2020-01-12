@@ -7,7 +7,9 @@
   Machine Learning
   <br>
 </h1>
+<font size="5">
 <strong>Autori</strong>
+</font>
 <br>
 <ul>
   <li>Andrea Piancone</li>
