@@ -7,4 +7,12 @@
   Machine Learning
   <br>
 </h1>
-
+Autori
+<br>
+<ul>
+  <li>Andrea Piancone</li>
+  <li>Valentina Nelli</li>
+  <li>Marcello Pichini</li>
+  <li>Mariam Savadogo</li>
+  <li>Ardalan Mehraram</li>
+</ul>
