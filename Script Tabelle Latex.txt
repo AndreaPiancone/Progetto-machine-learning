@@ -2,7 +2,7 @@
 \resizebox{\columnwidth}{!}{
 \begin{tabular}{llllll}
 		\toprule
-		Classifier & Recall & Precision & $F_1-$measure & Accuracy & AUC\\
+		\bfseries{Classifier} & \bfseries{Recall} & \bfseries{Precision} & \bfseries{$F_1-$measure} & \bfseries{Accuracy} & \bfseries{AUC}\\
 		\bottomrule
 		\rule{0pt}{3ex}    
 		J48 & 0.474 & 0.565 & 0.515 & 0.803 & 0.722\\
