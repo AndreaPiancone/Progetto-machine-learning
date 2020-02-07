@@ -1,0 +1,220 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish Article
+% LaTeX Template
+% Version 2.1 (1/10/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) 
+% With extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[fleqn,10pt]{SelfArx}
+
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\setlength{\columnsep}{0.55cm}
+\setlength{\fboxrule}{0.75pt}
+
+
+\definecolor{color1}{RGB}{0,0,90}
+\definecolor{color2}{RGB}{0,20,20}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+
+
+
+\PaperTitle{Progetto machine learning}
+
+\Authors{John Smith\textsuperscript{1}*, James Smith\textsuperscript{2}}
+\affiliation{\textsuperscript{1}\textit{Department of Biology, University of Examples, London, United Kingdom}}
+\affiliation{\textsuperscript{2}\textit{Department of Chemistry, University of Examples, London, United Kingdom}}
+\affiliation{*\textbf{Corresponding author}: john@smith.com} 
+
+\Keywords{Keyword1 --- Keyword2 --- Keyword3}
+\newcommand{\keywordname}{Keywords}
+
+
+
+\Abstract{Le intossicazioni da funghi sono causate da una scorretta classificazione delle specie; le tossine possono causare diverse gravi sindromi in base alla quantità ingerita. Al fine di effettuare la giusta identificazione sono stati costruiti dei modelli di Machine Learning con l’obiettivo di prevedere, sulla base delle caratteristiche del fungo, se esso sia edibile. Inoltre, sono stati implementati metodi di classificazione per valutare la presenza consistente di funghi in base al territorio in cui crescono e alla loro commestibilità. Difatti, è noto che i diversi habitat nell’ecosistema favoriscono la crescita e la diffusione di funghi sia edibili sia velenosi. Supponendo reali i dati in esame, sono stati selezionati, dopo un’attenta valutazione e comparazione dei metodi, i modelli migliori in termini di performance e attendibilità per rispondere alle domande di ricerca. I risultati ottenuti consentiranno di fornire uno strumento in aiuto alla prevenzione di intossicazioni ed una guida che permetta di quantificare in base all’ambiente la presenza di funghi.}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\flushbottom
+
+\maketitle
+\tableofcontents
+
+\thispagestyle{empty} 
+
+\section*{Introduction}
+Negli stati in cui i funghi sono molto consumati, un numero di intossicazioni rilevanti è censito ogni anno. Questo fenomeno è dovuto alla scorretta identificazione delle specie. Le tossine pericolose dei funghi sono in grado di causare diverse sindromi che possono essere fatali a seconda della quantità ingerita1. Pertanto una corretta identificazione del fungo, commestibile o velenoso, è importante per evitare incidenti. Il dataset impiegato per studiare questo fenomeno è composto da 8124 record e 23 variabili che descrivono le diverse peculiarità del fungo. Questo ipotetico campione corrisponde alle 23 specie di funghi lamellati nella famiglia Agaricus e Lepiota è tratto dalla Audubon Society Field Guide ai North American Mushrooms (1981). Ogni specie è identificata come commestibile o velenosa. La guida afferma chiaramente che non esiste una regola semplice, come ad esempio una singola caratteristica, per determinare la commestibilità di un fungo2.
+Dunque nella presente analisi, l’obiettivo primario è quello di prevedere, sulla base dei dati forniti relativamente alle caratteristiche del fungo, se esso sia edibile. Inoltre, l’obiettivo secondario è implementare un metodo di classificazione per identificare
+
+l’abbondanza di funghi sulla base della velenosità e del loro habitat.
+L’articolo è così costruito: inizialmente è stato introdotto il dataset ed un’analisi preliminare sui dati; successivamente sono stati presentati i modelli utilizzati e le misure di performance impiegate; infine sono state riportate le analisi ed i risultati ottenuti suddivisi secondo i due obiettivi introdotti precedentemente.
+\addcontentsline{toc}{section}{Introduction}
+
+
+
+
+\section{Descrizione del dataset e preprocessing}
+\subsection{Dataset}
+Il dataset \textit{Adult Census Income}, disponibile su Kaggle, contiene i dati relativi al censimento svolto nel 1994 negli Stati Uniti. Si compone di $\num{32561}$ records, dove ogni record rappresenta un individuo censito, descritto da una serie di fattori sociali e demografici. In particolare, su ogni persona censita sono stati rilevati i seguenti attributi:
+\begin{itemize}
+    \item \textit{Age}: età del cittadino;
+    \item \textit{Workclass}: Classe lavorativa del cittadino;
+    \item \textit{Fnlwgt}: attributo che esprime con quale misura l'individuo considerato rappresenta la propria classe sociale;
+    \item \textit{Education}: livello di istruzione del cittadino;
+    \item \textit{Education.num}: livello di istruzione del cittadino, ma rappresentato in termini numerici;
+    \item \textit{Marital.status}: stato civile del cittadino;
+    \item \textit{Relationship}: ruolo del cittadino all'interno del nucleo familiare;
+    \item \textit{Race}: etnia del cittadino;
+    \item \textit{Sex}: sesso del cittadino;
+    \item \textit{Captal.gain}: utili di capitali;
+    \item \textit{Capital.loss}: perdita di titoli di capitale;
+    \item \textit{Hours.per.week}: ore di lavoro settimanali;
+    \item \textit{Native.country}: nazione di nascita dell'individuo;
+    \item \textit{Income}: classe di reddito del cittadino.
+    
+\end{itemize}
+\subsection{Preprocessing}
+Prima di procedere con l'implementazione delle tecniche di Machine Learning, è stata eseguita una fase di preprocessing. In particolare, dalle statistiche descrittive è emerso che sono presenti $\num{4262}$ valori mancanti, di cui $\num{1836}$ nell'attributo \textit{workclass}, $\num{1843}$ nell'attributo \textit{occupation} e $\num{583}$ nell'attributo \textit{native.country}. Si è deciso di rimuovere i records che presentavano almeno un valore mancante su una attributo a causa di due ragioni. La prima consiste nell'elevato numero records di cui si compone il dataset, infatti solo $\num{2399}$ records (circa il $7\%$ del dataset originario), presentano valori mancanti. La seconda motivazone consta nel rischio concreto di alterare in maniera significativa i dati, tramite una sostituzione con la tecnica del \textit{most frequent value}.
+
+Successivamente, la fase di preprocessing è proseguita con l'eliminazione di due attributi superflui: \textit{education} e \textit{fnlwgt}. Il primo è ridondante in quanto replica le medesime informazioni contenute nell'attributo \textit{education.num}, giacchè si è deciso di conservare ai fini dell'analisi quest'ultimo per esprimere numericamente il livello di istruzione del cittadino, scartando l'attributo \textit{eudcation}. Il secondo invece mostra il sarebbe il grado di rappresentativita della propria `
+classe sociale da parte del cittadino considerato. Questo grado
+e espresso tramite il numero di rilevatori del censimento `
+che credono che l’osservazione rappresenti la propria classe. Questa feature e stata scartata direttamente, e non sarà più considerata.
+
+Infine, la fase di preprocessing si è conclusa raggruppando le modalità della variabile \textit{native.country} in due gruppi: \textit{USA}, se il cittadino è nativo degli Stati Uniti, \textit{other} se invece è nativo di un'altra nazione del mondo. Tale scelta è stata dettata dal fatto che l'attributo \textit{native.country} presentava un numero elevato di modalità, più precisamente 41, e la maggior parte dei censiti è nata negli Stati Uniti.
+\section{Modelli e misure di performance}
+\subsection{Modelli}
+Nel seguente lavoro sono state applicate diverse tecniche di classificazione al fine di individuare la tecnica migliore sulla base dei dati disponibili. In particolare:
+\begin{itemize}
+    \item \textit{Modelli euristici}: tra questi modelli si è scelto di adottare l'albero di decisione \textbf{J48} e il classificatore \textbf{Random Forest}, entrambi implementati da Weka;
+    \item \textit{Modelli di regressione}: tra i modelli appartenenti a questa famiglia si è deciso di applicare la \textbf{regressione logistica};
+    \item \textit{Modelli di separazione}: tra i diversi classificatori appartenenti a questa categoria si è scelto di utilizzare due tipi di \textbf{Support Vector Machine}, ovverosia \textbf{SPegasos} e \textbf{SMO poly}, che sfrutta come funzione di kernel un polykernerl;
+    \item \textit{Modelli probabilistici}: sfruttando il teorema Bayes, tra i classificatori appartenenti a questa famiglia sono stati utilizzati i modelli \textbf{Naive Bayes} e \textbf{NBTree}.
+\end{itemize}
+\subsection{Misure di performance}
+Il dataset è caratterizzato da una distribuzione sbilanciata della variabile target, in quanto la classe positiva è rappresentata solo dal $24\%$ del totale. In forza di questo sbilanciamento, l'Accuracy non è sufficiente a valutare adeguatamente i modelli di classificazione.
+Pertanto essa deve essere accompagnata da altre misure performance quali Precision, Recall, $F_1-$measure e AUC (Area Under Curve).
+Di seguito si descrivono brevemente le sopracitate misure di performance.
+
+L'Accuracy indica la percentuale di records positivi e negativi classificati correttamente. Essa è data dalla seguente formula:
+$$
+Accuracy = \frac{TP+TN}{TP+TN+FP+FN}
+$$
+Dove $TP$ e $TN$ indicano rispettivamente il numero di istanze positive e negative classificate correttamente, mentre $FP$ e $FN$ indicano rispettivamente il numero di istanze positive e negative classificate erroneamente.
+
+L'indicatore di Precision rappresenta la percentuale di records positivi che sono realmente positivi tra tutti quelli predetti come tali. La precision è data dalla seguente formula:
+$$
+Precision = \frac{TP}{TP+FP}
+$$
+Un valore elevato della Precision comporta un minor numero di falsi positivi.
+
+L'indicatore di Recall, invece, rappresenta la percentuale di records positivi correttamente classificati dal modello. Esso è dato dalla seguente formula:
+$$
+Recall = \frac{TP}{TP+FN}
+$$
+Un alto valore di Recall, implica che pochi records positivi sono stati erroneamente classificati dal modello. Tuttavia, in alcuni casi, queste ultime due misure sono tra loro in conflitto: al crescere dei veri positivi della classe rara migliora la Recall, ma questo potrebbe portare ad un peggioramento della Precision a causa di un incremento dei falsi positivi. Per evitare questo problema si utilizzano misure alternative come la $F_1-$measure, data dalla media armonica tra Precision e Recall. Tale metrica è data dalla seguente formula: 
+$$
+F_1-measure = \frac{2\cdot Precision \cdot Recall}{Precision + Recall}
+$$
+Un valore elevato della $F_1-$measure garantisce indicativamente che sia Recall che Precision siano elevate.
+
+Un ulteriore strumento per misurare la performance di un modello di classificazione consiste nella curva ROC, che mette in relazione la percentuale di falsi positivi con quella di veri positivi. Dalla curva ROC è possibile ricavare l'AUC, ossia l'area sottesa alla curva ROC. Maggiore è il valore di tale metrica, migliore è il modello.
+\section{Analisi e rislutati}
+(La parte introduttuva si farà una volta concluso il lavoro).
+\subsection{Classificazione con metodo holdout}
+In questa prima fase è stato applicato il metodo holdout che si basa sulla scomposizione del dataset in due sottoinsiemi esaustivi ed esclusivi, grazie ad una procedura di stratified sampling, dove l'attributo di stratificazione è \textit{income}. Grazie a questa procedura si è ottenuto il training set (67\% dei records) e il test set (33\% dei records). I classificatori precedentemente descritti, sono stati addestrati con il training set e validati con il test set.
+I risultati così ottenuti sono riportati nella Tabella 1.
+In particolare si osserva che:
+\begin{itemize}
+    \item tutti i classificatori presentano valori inferiori della Recall rispetto alla Precision;
+    \item i valori di $F_1-$measure sono sistematicamente inferiori alle relative Accuracy, ma ne seguono l'andamento. Questo non sorprende a causa dello sbilanciamento della variabile di risposta;
+    \item in termini di AUC tutti i classificatori sono caratterizzati da valori generalmente elevati, ad eccezione dei modelli \textbf{SMO poly} e \textbf{SPegasos}, i quali assumono valori significativamente inferiori rispetto agli altri che modelli.
+\end{itemize}
+\begin{table}[h!]
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{llllll}
+		\toprule
+		\bfseries{Classificatore} & \bfseries{Recall} & \bfseries{Precision} & \bfseries{$F_1-$measure} & \bfseries{Accuracy} & \bfseries{AUC}\\
+		\bottomrule
+		\rule{0pt}{3ex}    
+		J48 & 0.652 & 0.732 & 0.689 & 0.854 & 0.888\\
+		Random Forest & 0.609 & 0.65 & 0.630 & 0.837 & 0.865\\
+		Logistic & 0.622 & 0.737 & 0.675 & 0.851 & 0.903\\
+		SMO poly & 0.604 & 0.737 & 0.664 & 0.848 & 0.766\\
+		SPegasos & 0.554 & 0.740 & 0.634 & 0.841 & 0.745\\
+		Naive Bayes & 0.451 & 0.733 & 0.558 & 0.822 & 0.888\\
+		NBTree & 0.662 & 0.744 & 0.701 & 0.859 & 0.905\\
+		\bottomrule
+\end{tabular}}
+\caption{Classificatori con holdout}
+\label{table:holdout}
+\end{table}
+\section{Equal size undersampling e features selection}
+\subsection{Equal size undersampling}
+Al fine di ridurre le distorsioni generate dalla presenza di un attributo di classe sbilanciato si è deciso di accompagnare i metodi impiegati nella Sezione 2, con tecniche basate sul campionamento. In particolare si è scelto di adottare la tecnica nota come \textit{equal size undersampling}. Tale tecnica consiste nel mantenere tutti i records della classe rara, per poi selezionare in maniera casuale un uguale numero di records della classe abbondante, ottenendo quindi un nuovo dataset bilanciato. Questo metodo, nonostante la sua semplicità, presenta una serie di problematiche leagte all'eliminazione di dati che potrebbero rivelarsi utili nella fase di classificazione.
+\subsection{Feature selection}
+Al fine di selezionare le variabili più performanti e ridurre il numero di attributi esplicativi, si effettua sul dataset bilanciato ottenuto tramite il campionamento di \textit{equal size sampling} (Sezione 4.1) la feature selection con \textit{CFsubsetEval}. Tale tecnica consiste in un filtro multivariato in grado di selezionare gli attributi che maggiormente influenzano la variabile di classe, senza ignorare la correlazione tra le stesse. 
+\subsubsection{Feature selection con CFsubsetEval}
+A partire dal dataset bilnciato si è proceduto alla sua suddivisone in train set (37\% dei records) e training set (67\% dei records), tramite un procedimento di stratified sampling dove la variabile di stratificazione è \textit{income}. Dipoi è stato utilizzato il nodo Weka \textbf{AttributeSelectedClassifier}, impiegando il metodo CFsubsetEval e BestFirst. Gli attributi ottimali così selezionati sono: \textit{age}, \textit{education.num}, \textit{marital.status}, \textit{relationship}, \textit{capital.gain}, \textit{capital.loss} e \textit{hours.per.week}.
+Nella Tabella 2 sono riportate le misure di performance rispetto a questo modello:
+\begin{table}[h!]
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{llllll}
+		\toprule
+		\bfseries{Classificatore} & \bfseries{Recall} & \bfseries{Precision} & \bfseries{$F_1-$measure} & \bfseries{Accuracy} & \bfseries{AUC}\\
+		\bottomrule
+		\rule{0pt}{3ex}    
+		J48 & 0.837 & 0.793 & 0.814 & 0.809 & 0.886\\
+		Random Forest & 0.803 & 0.792 & 0.790 & 0.790 & 0.869\\
+		Logistic & 0.843 & 0.793 & 0.817 & 0.812 & 0.895\\
+		SMO poly & 0.890 & 0.754 & 0.816 & 0.800 & 0.800\\
+		SPegasos & 0.890 & 0.756 & 0.818 & 0.801 & 0.801\\
+		Naive Bayes & 0.394 & 0.879 & 0.544 & 0.670 & 0.881\\
+		NBTree & 0.852 & 0.801 & 0.825 & 0.820 & 0.905\\
+		\bottomrule
+\end{tabular}}
+\caption{Equal size sampling con CFsubsetEval}
+\label{table:holdout}
+\end{table}
+\begin{itemize}
+    \item In generale si osserva un sensibile miglioramento dei risultati conseguiti dai classificatori in termini di Recall, Precision e $F_1-$measure;
+    \item Naive Bayes presenta il valore massimo di Precision (0.879), ma i valori più bassi di Accuracy(0.670) e Recall(0.394), poichè tende a classificare negativamente le istanze in maniera eccessiva;
+    \item NBTree presenta i valori più elevati di Accuracy(0.820), $F_1-$measure (0.825) e AUC (0.905).
+\end{itemize} 
+
+Al fine di svolgere un'analisi più approfondita per individuare quale sia il miglior classificatore, si è deciso di partizionare il dataset bilanciato in due partizioni: Partizione A (90\% dei records) e Partizione B (10\% dei records). Per ottenere tali partizioni si è fatto ricorso a un procedimento di stratified sampling, dove l'attributo di stratificazione è \textit{income}. In seguito si è divisa la Partizione A in training set (67\% dei records) e test set (33\% dei records). I classificatori sono stati addestrati sul training set della Partizione A e validati sia sul test set della Partizione A, che sulla Partizione B. 
+In questa fase dell'analisi si è focalizzata l'attenzione su due misure di performance: Accuracy e $F_1-$measure.
+Nella Tabella 3 sono riportati i valori di Accuracy e $F_1-$measure riscontrati sulla Partizione A e sulla Partizione B, noncnchè sono presenti le differenze tra la suddette misure di performance tra le due partizioni:
+
+
+%------------------------------------------------
+\phantomsection
+
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\phantomsection
+\bibliographystyle{unsrt}
+\bibliography{sample}
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
