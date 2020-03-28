@@ -6,7 +6,7 @@
 
 ## Descrizione del progetto
 
-Il repository contiene il report ed il workflow knime del progetto dell'insegnamento di Machine Learning, tenuto presso il corso di laurea magistrale in Data Science dell'università degli studi di Milano-Bicocca.
+Il repository contiene il report ed il workflow Knime del progetto dell'insegnamento di Machine Learning, tenuto presso il corso di laurea magistrale in Data Science dell'università degli studi di Milano-Bicocca.
 Lo scopo del progetto è stato quello di definire un modello predittivo per l'individuazione di potenziali frodi fiscali e finanziarie negli Stati Uniti d'America, sulla base delle informazioni ottenibili, tramite censimenti della popolazione. 
 
 ## Dataset
