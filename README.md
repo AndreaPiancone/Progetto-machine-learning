@@ -28,7 +28,7 @@ Gli autori del progetto sono:
 ## Link utili
 
 * [dataset](https://www.kaggle.com/uciml/adult-census-income)
-* [report del progetto] (https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf)
+* [report del progetto](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf)
 * [workflow_knime_del progetto](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf)
 
 
