@@ -1,13 +1,22 @@
-<p align="center">
-  <a href="http://datascience.disco.unimib.it/it/"><img src = "https://github.com/malborroni/Foundations_of_Computer-Science/blob/master/images/DSunimib.png" width = "100%"></a>
-</p>
-<br>
-<h1 align="center">
+﻿<h1 align="center">
   <br>
  Progetto Machine Learning
   <br>
 </h1>
-<h2>Autori</h2>
+
+## Descrizione del progetto
+
+Il repository contiene il report ed il workflow del progetto dell'insegnamento di Machine Learning, tenuto presso il corso di laurea magistrale in Data Science dell'università degli studi di Milano-Bicocca.
+Lo scopo del progetto è stato quello di definire un modello predittivo per l'individuazione di potenziali frodi fiscali e finanziarie negli Stati Uniti d'America, sulla base delle informazioni ottenibili, tramite censimenti della popolazione. 
+
+## Dataset
+Il dataset usato nel progetto è il dataset <a href="[https://www.kaggle.com/wenruliu/adult-income-dataset](https://www.kaggle.com/wenruliu/adult-income-dataset)"> Adult income census </a>, disponibile presso il sito Kaggle.
+
+## Software impiegato
+Per lo svolgimento del progetto è stato impiegato il software Knime.
+
+## Autori
+Gli autori del progetto sono:
 <ul>
   <li>Andrea Piancone</li>
   <li>Valentina Nelli</li>
@@ -16,4 +25,11 @@
   <li>Ardalan Mehraram</li>
 </ul>
 
-<br> Descrizione del progetto <br>
+## Link utili
+<ul>
+<li> <a href="[https://www.kaggle.com/wenruliu/adult-income-dataset](https://www.kaggle.com/wenruliu/adult-income-dataset)"> dataset del progetto </a>
+<li> <a href="[https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf)"> report del progetto</a>
+<li><a href="[https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf)">Workflow knime del progetto
+</ul>
+
+
