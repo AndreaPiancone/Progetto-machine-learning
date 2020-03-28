@@ -15,3 +15,5 @@
   <li>Mariam Savadogo</li>
   <li>Ardalan Mehraram</li>
 </ul>
+
+<br> Descrizione del progetto <br>
