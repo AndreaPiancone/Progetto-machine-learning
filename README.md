@@ -29,7 +29,7 @@ Gli autori del progetto sono:
 <ul>
 <li> <a href="[https://www.kaggle.com/wenruliu/adult-income-dataset](https://www.kaggle.com/wenruliu/adult-income-dataset)"> dataset del progetto </a>
 <li> <a href="[https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf)"> report del progetto</a>
-<li><a href="[https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf)">Workflow knime del progetto
+<li> <a href="[https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf)">Workflow knime del progetto
 </ul>
 
 
