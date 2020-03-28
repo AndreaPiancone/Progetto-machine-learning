@@ -10,7 +10,7 @@ Il repository contiene il report ed il workflow del progetto dell'insegnamento d
 Lo scopo del progetto è stato quello di definire un modello predittivo per l'individuazione di potenziali frodi fiscali e finanziarie negli Stati Uniti d'America, sulla base delle informazioni ottenibili, tramite censimenti della popolazione. 
 
 ## Dataset
-Il dataset usato nel progetto è il dataset <a href="[https://www.kaggle.com/wenruliu/adult-income-dataset](https://www.kaggle.com/wenruliu/adult-income-dataset)"> Adult income census </a>, disponibile presso il sito Kaggle.
+Il dataset usato nel progetto è il dataset Adult Census Income, disponibile presso il sito Kaggle.
 
 ## Software impiegato
 Per lo svolgimento del progetto è stato impiegato il software Knime.
@@ -28,5 +28,7 @@ Gli autori del progetto sono:
 ## Link utili
 
 * [dataset](https://www.kaggle.com/uciml/adult-census-income)
+* [report del progetto] (https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Report%20team%2026.pdf)
+* [workflow_knime_del progetto](https://github.com/AndreaPiancone/Progetto_machine_learning/blob/master/Team26_Workflow.knwf)
 
 
